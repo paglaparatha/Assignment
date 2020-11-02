@@ -1,0 +1,12 @@
+<div class="container">
+  <ng-container *ngIf="university; else loader">
+    <h2 class="text-center">{{ university.name | titlecase }}</h2>
+    <p class="text-center">({{ university.location }})</p>
+    <img [src]="path + university.image" alt="">
+    <br>
+    <p class="text-justify">{{ university.description }}</p>
+  </ng-container>
+  <ng-template #loader>
+    <app-loader></app-loader>
+  </ng-template>
+</div>

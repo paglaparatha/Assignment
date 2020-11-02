@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+  <a class="navbar-brand" href="#" [routerLink]="['/']">Assignment</a>
+  <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" *ngIf="isLoggedin">
+        <a href="#" (click)="onLogout()" [routerLink]="['/login']" class="nav-link">Logout</a>
+      </li>
+      <li class="nav-item" *ngIf="!isLoggedin">
+        <a href="#" [routerLink]="['/login']" class="nav-link">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,21 @@
+<div class="container">
+  <h2 class="text-center">Universities</h2>
+  <ng-container *ngIf="universities; else loading">
+    <div class="row">
+      <div class="col-md-4" (click)="storeId(uni.id)" *ngFor="let uni of universities">
+        <div class="card">
+          <img class="card-img-top" [src]="path + uni.image" alt="Card image" style="width:100%">
+          <div class="card-body">
+            <h4 class="card-title">{{ uni.name | titlecase }}</h4>
+            <strong class="card-text">{{ uni.location }}</strong>
+            <p class="card-text">{{ uni.description }}</p>
+            <a href="#" [routerLink]="['/university', uni.id]" class="btn btn-primary stretched-link">See More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #loading>
+    <app-loader></app-loader>
+  </ng-template>
+</div>

@@ -1,0 +1,29 @@
+<div class="col-12">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <form (ngSubmit)="onLogin(login)" *ngIf="!recievedOTP; else verifyOTP" #login="ngForm">
+        <h2 class="text-center">Login</h2>
+        <div class="form-group">
+          <input type="tel" name="phone" pattern="[6-9]{1}[0-9]{9}" required ngModel placeholder="Enter Phone Number*" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" ngModel email placeholder="Enter Email" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" name="name" ngModel required placeholder="Enter Name*" class="form-control">
+        </div>
+        <input type="submit" value="Login" [disabled]="!login.valid" class="btn btn-primary">
+      </form>
+      <ng-template #verifyOTP>
+        <form (ngSubmit)="onVerifyOtp(otpform)" #otpform="ngForm">
+          <h2 class="text-center">Verify OTP</h2>
+          <div class="form-group">
+            <input type="number" name="otp" ngModel required pattern="[0-9]{4}" placeholder="Enter OTP" class="form-control">
+          </div>
+          <p *ngIf="timer >= 3" (click)="onResendOTP()" style="cursor: pointer;">Resend OTP</p>
+          <input type="submit" value="Verify" [disabled]="!otpform.valid" class="btn btn-primary">
+        </form>
+      </ng-template>
+    </div>
+  </div>
+</div>
